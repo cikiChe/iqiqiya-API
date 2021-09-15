@@ -22,11 +22,16 @@ function getBilibiliAVCover($avNum) {
         exit;
     }
     $img_url = $matches[1];
+    
+    $str = '["'.$img_url.'"]';
+    $str_decode = json_decode($str, true);
+    $decode_url = $str_decode[0];
+    
     //保存图片
 	//$img_url = file_get_contents($matches[1]);
     //file_put_contents('default.png', $img);
     //echo '<img src="default.png">';
-	echo $img_url;    //输出img_url
+	echo $decode_url;    //输出img_url
 }
 $AV_number = $_GET['AV_number'];
 getBilibiliAVCover($AV_number);
